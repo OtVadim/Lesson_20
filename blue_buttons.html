@@ -5,43 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-        .tab-content {
-            display: none;
+    <style>    
+        .tab-button {
+          height: 50px;
+          width: 120px;
+          padding: 5px;
+          background-color: rgb(238, 245, 249);
+          margin-top: 10px;
+          border-radius: 10px;
+          border-color: aliceblue;
+          border-width: 1px;
         }
 
         .active {
-            display: block;
+          background-color: rgb(143, 190, 254);
         }
+
+        .tab-content {
+          display: none;
+        }
+        .visible {
+          display: block;
+        }
+
+        
+
     </style>
     
   </head>
   <body>
-    <!-- По клику на кнопку с *id* показывать таб "*id*-content" -->
-    <ul class="tabs" id="tabs">
-      <li class="tab-item">
-        <button class="tab-button active" id="home" type="button">Home</button>
-      </li>
-      <li class="tab-item">
-        <button class="tab-button" id="profile" type="button">Profile</button>
-      </li>
-      <li class="tab-item" role="presentation">
-        <button class="tab-button" id="contact" type="button">Contact</button>
-      </li>
-    </ul>
+      <!-- По клику на кнопку с *id* показывать таб "*id*-content" -->
+      <ul class="tabs" id="tabs">
+        <li class="tab-item">
+          <button class="tab-button" id="home" type="button">Home</button>
+        </li>
+        <li class="tab-item">
+          <button class="tab-button" id="profile" type="button">Profile</button>
+        </li>
+        <li class="tab-item" role="presentation">
+          <button class="tab-button" id="contact" type="button">Contact</button>
+        </li>
+      </ul>
+  
+      <div>
+        <div class="tab-content" id="home-content">Home content</div>
+        <div class="tab-content" id="profile-content">Profile content</div>
+        <div class="tab-content" id="contact-content">Contact content</div>
+      </div>
+      <script>
+        
 
-    <div>
-      <div class="tab-content" id="home-content">Home content</div>
-      <div class="tab-content active" id="profile-content">Profile content</div>
-      <div class="tab-content" id="contact-content">Contact content</div>
-    </div>
-    <script>
-        tabs.onclick = function(event) {
-            let button = event.target.closest('button');
-            if (!button) return;
-            button.style.background = 'blue';
-        };
+          tabs.onclick = function(event) {
+            const button = event.target.closest('button');
+              if (!button) return;
+              button.classList.toggle('active'); 
 
-    </script>
+              const targContTag = document.getElementById(button.id + '-content');
+              targContTag.classList.toggle('visible');
+              
+          };
+
+          
+
+      </script>
   </body>
 </html>

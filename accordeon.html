@@ -54,25 +54,20 @@
   
       document.querySelectorAll('.accordion-item').forEach(function(section){
         section.addEventListener('click', function(e) {
+          const isOpen = e.target.classList.contains('opened');
           document.querySelectorAll('.accordion-item').forEach(function(section){
             section.classList.remove('opened')
           });
-          e.target.closest('.accordion-item').classList.add('opened');
+
+          if (!isOpen) {
+            e.target.closest('.accordion-item').classList.toggle('opened');
+          };
+          
           
         }); 
 
       });
       
-
-      /*
-      accordion.onclick = function(cls) {
-          if (event.target.className != 'accordion-button') return;
-          let hide = event.target.closest('.accordion-item')
-          if (hide.classList.contains('opened')){
-            hide.classList.remove('opened')
-          } else { return };
-      */
-    
     </script>
   </body>
 </html>
